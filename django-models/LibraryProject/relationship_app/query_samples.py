@@ -7,5 +7,5 @@ library_name = "New Library"
 library = Library.objects.get(name=library_name)
 library.books.all()
 
-new_library = Library.objects.get(name=library_name)
-Librarian.objects.filter(library=new_library).values()
+librarian = Librarian.objects.get(library=library_name)
+librarian.objects.all()
