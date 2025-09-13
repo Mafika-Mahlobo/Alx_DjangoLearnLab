@@ -7,7 +7,7 @@ class BoookAdmin(admin.ModelAdmin):
     list_filter = ('title', 'author', 'publication_year')
 
 
-class CustomUserManager(admin.ModelAdmin):
+class CustomUserAdmin(admin.ModelAdmin):
     list_display = ("username", "email", "date_of_birth", "is_staff", "is_active")
     search_fields = ("username", "email")
     fieldsets = (
@@ -18,4 +18,4 @@ class CustomUserManager(admin.ModelAdmin):
 
 
 admin.site.register(Book, BoookAdmin)
-admin.site.register(CustomUser, CustomUserManager)
+admin.site.register(CustomUser, CustomUserAdmin)
