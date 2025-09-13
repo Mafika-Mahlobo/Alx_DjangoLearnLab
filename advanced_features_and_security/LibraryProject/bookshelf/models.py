@@ -17,10 +17,6 @@ class CustomUserManager(BaseUserManager):
         if not email:
             raise ValueError("The Email field is required")
 
-        if not date_of_birth:
-            raise ValueError("The Date of Birth field is requred")
-
-
         email = self.normalize_email(email)
         user = self.model(username=username, email=email, 
             date_of_birth=date_of_birth, profile_photo=profile_photo, **extra_fields)
@@ -56,7 +52,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractUser):
-    date_of_birth = models.DateField()
+    date_of_birth = models.DateField(null=True, blank=True)
     profile_photo = models.ImageField(upload_to="profiles/", null=True, blank=True)
 
     objects = CustomUserManager()
