@@ -53,10 +53,13 @@ MIDDLEWARE = [
 ]
 
 
-DEFAULT_AUTHENTICATION_CLASSES = [
-    'rest_framework.auhtentication.TokenAuthentication',
-    'rest_framework.auhtentication.SessionAuthentication'
-]
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ]
+}
+
 
 ROOT_URLCONF = 'api_project.urls'
 
