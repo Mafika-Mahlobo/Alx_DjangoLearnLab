@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Posts{% endblock %}</title>
+</head>
+<body>
+	{% block content %}
+		{% if post %}
+			{% for p in post %}
+				<li>
+					<h4>{{ p.title }}</h4>
+					<p>{{p.content}}</p>
+					<p>Author: {{ p.author }}</p>
+					<p>Date: {{ p.published_date }}</p>
+					<form method="post" action="{% url 'delete' p.pk %}">
+						{% csrf_token %}
+						<button type="submit">Delete</button>
+					</form>
+				</li><br>
+			{% endfor %}
+		{% else %}
+			<p>No Posts available!</p>
+		{% endif %}
+	{% endblock %}
+</body>
+</html>
