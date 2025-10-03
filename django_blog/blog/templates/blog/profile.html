@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Profile Page{% endblock %}</title>
+</head>
+<body>
+	{% block content %}
+
+	<h3>Welcome {{ request.user.email }}. Update your personal information</h3>
+	<form method="post">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<button type="submit">Update</button>
+	</form>
+
+	<form method="post" action="{% url 'logout' %}">
+		{% csrf_token %}
+		<button type="submit">Logout</button>
+	</form>
+
+	{% endblock %}
+</body>
+</html>
