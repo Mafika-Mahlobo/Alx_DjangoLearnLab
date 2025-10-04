@@ -62,7 +62,7 @@ class EditPostView(LoginRequiredMixin, UserPassesTestMixin ,generic.UpdateView):
 
 class DeletePostView(LoginRequiredMixin, UserPassesTestMixin, generic.DeleteView):
 	model = Post
-	success_url = reverse_lazy("posts")
+	success_url = reverse_lazy("delete-success")
 
 	def test_func(self):
 		post = self.get_object()
@@ -73,3 +73,6 @@ class DetailsPostView(LoginRequiredMixin, generic.DetailView):
 	template_name = "blog/detail.html"
 	login_url = "login"
 	context_object_name = "post"
+
+def delete_success(request):
+	return render(request, "blog/delete_success.html")
