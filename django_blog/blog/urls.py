@@ -8,8 +8,8 @@ urlpatterns = [
 	path("login/", LoginView.as_view(template_name="blog/login.html"), name="login"),
 	path("logout/", LogoutView.as_view(next_page="home"), name="logout"),
 	path("posts/", views.ListPostsView.as_view(), name="posts"),
-	path("posts/new/", views.CreatePostView.as_view(), name="create"),
-	path("posts/<int:pk>/edit/", views.EditPostView.as_view(), name="edit"),
+	path("post/new/", views.CreatePostView.as_view(), name="create"),
+	path("post/<int:pk>/update/", views.EditPostView.as_view(), name="edit"),
 	path("post/<int:pk>/delete/", views.DeletePostView.as_view(), name="delete"),
 	path("posts/<int:pk>/", views.DetailsPostView.as_view(), name="details"),
 ]
