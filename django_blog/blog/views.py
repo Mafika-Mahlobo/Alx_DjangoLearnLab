@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.views import generic
-from .models import Post
+from .models import Post, Comment
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import CustomForm, CustomUserUpdateForm
@@ -76,3 +76,8 @@ class DetailsPostView(LoginRequiredMixin, generic.DetailView):
 
 def delete_success(request):
 	return render(request, "blog/delete_success.html")
+
+class ListCommentView(LoginRequiredMixin, generic.ListView):
+	model = Comment
+	template_name = "blog/comments.html"
+	context_object_name = "comments"
