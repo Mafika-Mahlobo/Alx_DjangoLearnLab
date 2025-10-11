@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 
 class CustomUser(AbstractUser):
 	bio = models.TextField(blank=True)
-	profile_pic = models.ImageField(upload_to="profile_pics/", null=True, blank=True)
+	profile_picture = models.ImageField(upload_to="profile_pics/", null=True, blank=True)
 	followers = models.ManyToManyField("self", symmetrical=False, 
 		related_name="user_following", blank=True)
 
